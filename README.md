@@ -20,10 +20,9 @@ This document provides guidelines and examples to help developers design simple,
 ## Our Technology Recommendations for APIs
 
 Unless there are specific reasons otherwise, the first choices for any API development team today should be:
-
-• Pragmatic REST, because an API should be easy to provide, learn and consume
-• JSON, because it is easy to produce and consume
-• OAuth, because it prevents password propagation
+* Pragmatic REST, because an API should be easy to provide, learn and consume
+* JSON, because it is easy to produce and consume
+* OAuth, because it prevents password propagation
 
 ## Pragmatic REST
 
@@ -65,12 +64,12 @@ Security, rate limiting, routing, and so on can and should be hidden in the HTTP
 #### Examples
 
 | VERB   | URI               | DESCRIPTION                         |
-| -------| ------------------| ------------------------------------|
+| -------| ----------------- | ----------------------------------- |
 | POST   | /orders           | Creates a new order.                |
 | GET    | /orders/{orderId} | Retrieves a specific order.         |
 | PUT    | /orders/{orderId} | Updates a specific order.           |
 | DELETE | /orders/{orderId} | Deletes a specific order.           |
-|        |                   |                                     |
+| ------ | ----------------- | ----------------------------------- |
 | GET    | /orders           | Retrieves a list of orders.         |
 | PATCH  | /orders/{orderId} | Partially updates a specific order. |
 
