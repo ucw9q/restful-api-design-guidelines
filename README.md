@@ -59,7 +59,7 @@ Security, rate limiting, routing, and so on can and should be hidden in the HTTP
 ### URIs
 * A URI identifies a resource.
 * URLs should include nouns, not verbs.
-* URI paths that refer to a collection of objects should consist of a plural noun, such as /orders to refer to a set of all orders.
+* URI paths that refer to a collection of objects should consist of a plural noun, such as ``/orders` to refer to a set of all orders.
 
 #### Examples
 
@@ -69,7 +69,6 @@ Security, rate limiting, routing, and so on can and should be hidden in the HTTP
 | GET    | /orders/{orderId} | Retrieves a specific order.         |
 | PUT    | /orders/{orderId} | Updates a specific order.           |
 | DELETE | /orders/{orderId} | Deletes a specific order.           |
-| ------ | ----------------- | ----------------------------------- |
 | GET    | /orders           | Retrieves a list of orders.         |
 | PATCH  | /orders/{orderId} | Partially updates a specific order. |
 
