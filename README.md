@@ -59,7 +59,7 @@ Security, rate limiting, routing, and so on can and should be hidden in the HTTP
 ### URIs
 * A URI identifies a resource.
 * URLs should include nouns, not verbs.
-* URI paths that refer to a collection of objects should consist of a plural noun, such as `orders` to refer to a set of all orders.
+* URI paths that refer to a collection of objects should consist of a plural noun, such as `/orders` to refer to a set of all orders.
 
 #### Examples
 
