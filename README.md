@@ -20,6 +20,7 @@ This document provides guidelines and examples to help developers design simple,
 ## Our Technology Recommendations for APIs
 
 Unless there are specific reasons otherwise, the first choices for any API development team today should be:
+
 • Pragmatic REST, because an API should be easy to provide, learn and consume
 • JSON, because it is easy to produce and consume
 • OAuth, because it prevents password propagation
@@ -47,7 +48,9 @@ Make it straightforward for programmers to understand the data the API expects, 
 Don't return 200 (OK) when you should be returning 201 (CREATED) and a [Location Header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) pointing to the location of the new resource.
 
 ### Versioning matters
-Always version your API. See: http://semver.org/
+Always version your API.
+
+See: http://semver.org/
 
 ### Everything else should be hidden
 Security, rate limiting, routing, and so on can and should be hidden in the HTTP headers.
