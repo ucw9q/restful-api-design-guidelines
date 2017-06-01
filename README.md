@@ -63,8 +63,6 @@ new resource.
 Always version your API. By default, all requests receive the latest version of the REST API. 
 We encourage you to explicitly request a particular version via the Accept Header.
 
-Accept: application/vnd.github.v3+json
-
 ### Everything else should be hidden
 Security, rate limiting, routing, and so on can and should be hidden in the HTTP headers.
 
@@ -186,7 +184,7 @@ Guidelines:
 HTTP defines forty standard status codes that can be used to convey the results of a client’s request. The status codes 
 are divided into the five categories:
 
-| Category           | DESCRIPTION                                                                                    |     
+| Category           | Description                                                                                    |     
 | -------------------| ---------------------------------------------------------------------------------------------- |
 | 1xx: Informational | Communicates transfer protocol-level information.                                              |
 | 2xx: Success       | Indicates that the client’s request was accepted successfully.                                 |
