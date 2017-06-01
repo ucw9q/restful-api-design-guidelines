@@ -88,8 +88,8 @@ Each URI below identifies a document resource:
 
 A document may have child resources that represent its specific subordinate concepts. With its ability to bring many 
 different resource types together under a single parent, a document is a logical candidate for a REST API’s root 
-resource, which is also known as the docroot. The example URI below identifies the docroot, which is the Superannuation 
-(business area's) REST API entry point:
+resource, which is also known as the "docroot". The example URI below identifies the docroot, which is the Superannuation 
+business area's REST API entry point:
 
     http://api.superannuation.ato.gov.au
 
@@ -125,28 +125,12 @@ alert to a user:
 
     POST /alerts/245743/resend
 
-// TODO
+## URI Path Design
+Each URI path segment, separated by forward slashes (/), represents a design opportunity. Assigning meaningful values 
+to each path segment helps to clearly communicate the hierarchical structure of a REST API’s resource model.
 
-### URIs
-* A URI identifies a resource.
-* URIs should include nouns, not verbs.
-* URI paths that refer to a collection of objects should use a plural noun, for example, `/orders`.
+* A singular noun should be used for document names
+* A plural noun should be used for collection names
+* A plural noun should be used for store names
+* A verb or verb phrase should be used for controller names
 
-#### Examples
-
-| VERB   | URI               | DESCRIPTION                         |
-| -------| ----------------- | ----------------------------------- |
-| POST   | /orders           | Creates a new order.                |
-| GET    | /orders/{orderId} | Retrieves a specific order.         |
-| PUT    | /orders/{orderId} | Updates a specific order.           |
-| DELETE | /orders/{orderId} | Deletes a specific order.           |
-| GET    | /orders           | Retrieves a list of orders.         |
-| PATCH  | /orders/{orderId} | Partially updates a specific order. |
-
-
-...
-
-### Versioning
-See: http://semver.org/
-
-// TODO
