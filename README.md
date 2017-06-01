@@ -25,6 +25,9 @@ Unless there are specific reasons otherwise, the first choices for any API devel
 * JSON, because it is easy to produce and consume
 * OAuth, because it prevents password propagation
 
+We describe these technologies as a first choice, not as an only choice. You might decide to include a query language, 
+like [GraphQL](http://graphql.org/) with your API.
+
 ## Pragmatic REST
 
 The REST architectural style leverages the HTTP protocol to define an approach to inter-computer communications.
