@@ -20,7 +20,7 @@ APIs.
 
 ## Our Technology Recommendations for APIs
 
-Unless there are specific reasons otherwise, the first choices for any API development team today should be:
+The first choices for any API development team today should be:
 * Pragmatic REST, because an API should be easy to provide, learn and consume
 * JSON, because it is easy to produce and consume
 * OAuth, because it prevents password propagation
