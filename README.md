@@ -74,7 +74,7 @@ URI paths, it may be helpful to first think about the REST API’s resource mode
 ### Resource Archetypes
 When modeling an API’s resources, we can start with the some basic resource archetypes. Like design patterns, the 
 resource archetypes help us consistently communicate the structures and behaviors that are commonly found in REST API 
-designs. A REST API is composed of four distinct resource archetypes: document, collection, store, and controller.
+designs. A REST API is composed of four distinct resource archetypes: **document**, **collection**, **store**, and **controller**.
 
 ### Document
 A document resource is a singular concept that is akin to an object instance or a database record. A document’s state 
@@ -89,7 +89,7 @@ Each URI below identifies a document resource:
 A document may have child resources that represent its specific subordinate concepts. With its ability to bring many 
 different resource types together under a single parent, a document is a logical candidate for a REST API’s root 
 resource, which is also known as the docroot. The example URI below identifies the docroot, which is the Superannuation 
-(Business Area's) REST API entry point:
+(business area's) REST API entry point:
 
     http://api.superannuation.ato.gov.au
 
