@@ -151,7 +151,7 @@ Therefore, unlike the other elements of a URI, the query part may be transparent
 
 Guidelines:
 * The query component of a URI may be used to filter collections or stores.
-* The query component of a URI should be used to paginate collection or store results
+* The query component of a URI should be used to paginate collection or store results.
 
 ## Request Methods
 
@@ -163,16 +163,16 @@ resource from its parent.
 
 Guidelines:
 * GET and POST must not be used to tunnel other request methods.
-* GET must be used to retrieve a representation of a resource
-* HEAD should be used to retrieve response headers
-* POST must be used to create a new resource in a collection
-* POST must be used to execute controllers
+* GET must be used to retrieve a representation of a resource.
+* HEAD should be used to retrieve response headers.
+* POST must be used to create a new resource in a collection.
+* POST must be used to execute controllers.
 
-* PUT must be used to both insert and update a stored resource
-* PUT must be used to update mutable resources
+* PUT must be used to both insert and update a stored resource.
+* PUT must be used to update mutable resources.
 
-* DELETE must be used to remove a resource from its parent
-* OPTIONS should be used to retrieve metadata that describes a resource’s available interactions
+* DELETE must be used to remove a resource from its parent.
+* OPTIONS should be used to retrieve metadata that describes a resource’s available interactions.
   
 ## Response Status Codes
 
