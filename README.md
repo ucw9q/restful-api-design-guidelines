@@ -16,7 +16,6 @@ APIs.
 * [APIs A Strategy Guide](http://shop.oreilly.com/product/0636920021223.do)
 * [REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)
 * [HTTP: The Definitive Guide](http://shop.oreilly.com/product/9781565925090.do)
-* [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
 
 ## Our Technology Recommendations for APIs
 
@@ -37,7 +36,8 @@ We follow REST principles (but not all of them).
 ## Pragmatic REST Principles
 
 ### URIs matter
-A well-designed URI pattern makes an API easy to produce, consume, discover, and extend.
+RESTful APIs use Uniform Resource Identifiers (URIs) to address resources.
+And, a good **resource model** makes an API easy to produce, consume, discover, and extend.
 
 ### Parameters matter
 Use a standard and easy-to-guess set of optional parameters for each API call.
@@ -54,19 +54,41 @@ new resource.
 ### Versioning matters
 Always version your API.
 
-See: http://semver.org/
-
 ### Everything else should be hidden
 Security, rate limiting, routing, and so on can and should be hidden in the HTTP headers.
 
+## Resource Oriented Design
+
+When desiging resource-oriented APIs, follow these steps:
+* Determine what types of resources an API provides
+* Determine the relationships between resources.
+* Decide the resource name schemes based on types and relationships.
+* Decide the resource schemas.
+* Attach minimum set of methods to resources.
+
+## Resource Modeling
+The URI path conveys a REST API’s resource model, with each forward slash separated
+path segment corresponding to a unique resource within the model’s hierarchy. For
+example, this URI design:
+
 ## General guidelines for RESTful APIs
+
+## URI Authority Design
+
+// TODO
+This section covers the naming conventions that should be used for the authority portion of a REST API.
+
+### Consistent subdomain names should be used for your client developer portal
+If an API provides a developer portal, by convention it should have a subdomain labeled developer. 
+For example:
+    `https://developer.ato.gov.au`
+
+...
 
 ### URIs
 * A URI identifies a resource.
 * URIs should include nouns, not verbs.
-* URI paths that refer to a collection of objects should consist of a plural noun, for example, `/orders` which refers to the set of all orders.
-* URI paths that refer to a single object should consist of a singular noun, followed by a unique primary key. For instance, /customers/Bob to refer to the customer with
-the primary ID of Bob, or /accounts/123456 to refer to account number 123456.
+* URI paths that refer to a collection of objects should use a plural noun, for example, `/orders`.
 
 #### Examples
 
@@ -83,5 +105,5 @@ the primary ID of Bob, or /accounts/123456 to refer to account number 123456.
 ...
 
 ### Versioning
-???
+// TODO
 See: http://semver.org/
