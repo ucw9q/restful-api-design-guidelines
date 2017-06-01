@@ -5,6 +5,10 @@
 * [Pragmatic REST](#pragmatic-rest)
 * [Pragmatic REST Principles](#pragmatic-rest-principles)
 * [Resource Oriented Design](#resource-oriented-design)
+* [Resource Modelling](#resource-modelling)
+* [URI Path Design](#uri-path-design)
+* [URI Query Design](#uri-query-design)
+* [Request Methods](#request-methods)
 
 ## Introduction
 
@@ -26,7 +30,7 @@ The first choices for any API development team today should be:
 * OAuth, because it prevents password propagation
 
 We describe these technologies as a first choice, not as an only choice. You might decide to include a query language, 
-like [GraphQL](http://graphql.org/) with your API.
+like [GraphQL](http://graphql.org/), with your API.
 
 ## Pragmatic REST
 
@@ -73,7 +77,7 @@ When desiging resource-oriented APIs, follow these steps:
 * Decide the resource schemas
 * Attach minimum set of methods to resources
 
-### Resource Modelling
+## Resource Modelling
 Resource modelling is an exercise that establishes your API’s key concepts. Before diving directly into the design of
 URI paths, it may be helpful to first think about the REST API’s resource model.
 
@@ -165,8 +169,8 @@ controllers. **PUT** should be used to add a new resource to a store or update a
 resource from its parent. 
 
 Guidelines:
-* GET and POST must not be used to tunnel other request methods.
 * GET must be used to retrieve a representation of a resource.
+* GET and POST must not be used to tunnel other request methods.
 * HEAD should be used to retrieve response headers.
 * POST must be used to create a new resource in a collection.
 * POST must be used to execute controllers.
@@ -178,5 +182,36 @@ Guidelines:
 * OPTIONS should be used to retrieve metadata that describes a resource’s available interactions.
   
 ## Response Status Codes
+
+HTTP defines forty standard status codes that can be used to convey the results of a client’s request. The status codes 
+are divided into the five categories:
+
+| Category           | DESCRIPTION                                                                                    |     
+| -------------------| ---------------------------------------------------------------------------------------------- |
+| 1xx: Informational | Communicates transfer protocol-level information.                                              |
+| 2xx: Success       | Indicates that the client’s request was accepted successfully.                                 |
+| 3xx: Redirection   | Indicates that the client must take some additional action in order to complete their request. |
+| 4xx: Client Error  | This category of error status codes points the finger at clients.                              |
+| 5xx: Server Error  | The server takes responsibility for these error status codes.                                  |
+
+Guidelines:
+* 200 (“OK”) should be used to indicate nonspecific success.
+* 200 (“OK”) must not be used to communicate errors in the response body.
+* 201 (“Created”) must be used to indicate successful resource creation.
+* 202 (“Accepted”) must be used to indicate successful start of an asynchronous action (Controller resources may send 
+202 responses, but other resource types should not).
+* 301 (“Moved Permanently”) should be used to relocate resources.
+* 302 (“Found”) should not be used.
+* 303 (“See Other”) should be used to refer the client to a different URI.
+* 304 (“Not Modified”) should be used to preserve bandwidth.
+* 307 (“Temporary Redirect”) should be used to tell clients to resubmit the request to another URI.
+* 400 (“Bad Request”) may be used to indicate nonspecific failure
+* 401 (“Unauthorized”) must be used when there is a problem with the client’s credentials.
+
+
+
+
+
+
 
 
