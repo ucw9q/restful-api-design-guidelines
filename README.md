@@ -129,29 +129,50 @@ alert to a user:
     POST /alerts/4321/resend
 
 ## URI Path Design
+
 Each URI path segment, separated by forward slashes (/), represents a design opportunity. Assigning meaningful values 
 to each path segment helps to clearly communicate the hierarchical structure of a REST API’s resource model.
 
 Guidelines:
-* A singular noun should be used for document names
-* A plural noun should be used for collection names
-* A plural noun should be used for store names
-* A verb or verb phrase should be used for controller names
+* A singular noun should be used for document names.
+* A plural noun should be used for collection names.
+* A plural noun should be used for store names.
+* A verb or verb phrase should be used for controller names.
+
+## URI Query Design
+A URI’s query comes after the path and before the optional fragment:
+
+    URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
+
+As a component of a URI, the query contributes to the unique identification of a resource.
+
+The query component can provide clients with additional interaction capabilities such as ad hoc searching and filtering.
+Therefore, unlike the other elements of a URI, the query part may be transparent to a REST API’s client.
+
+Guidelines:
+* The query component of a URI may be used to filter collections or stores.
+* The query component of a URI should be used to paginate collection or store results
+
+## Request Methods
+
+Each HTTP method has specific, well-defined semantics within the context of a REST API’s resource model. The purpose of 
+**GET** is to retrieve a representation of a resource’s state. **HEAD** is used to retrieve the metadata associated 
+with the resource’s state. **PUT** should be used to add a new resource to a store or update a resource. **DELETE** 
+removes a resource from its parent. **POST** should be used to create a new resource within a collection and execute 
+controllers.
+
+Guidelines:
+* GET and POST must not be used to tunnel other request methods.
+* GET must be used to retrieve a representation of a resource
+* HEAD should be used to retrieve response headers
+* POST must be used to create a new resource in a collection
+* POST must be used to execute controllers
+* DELETE must be used to remove a resource from its parent
+* OPTIONS should be used to retrieve metadata that describes a resource’s available interactions
+  
+* PUT must be used to both insert and update a stored resource
+* PUT must be used to update mutable resources
+
+## Response Status Codes
 
 
-
-
-# ! Work in Progress !
-
-## URI Authority Design
-
-This section covers the naming conventions that should be used for the authority portion of a REST API.
-
-### Consistent subdomain names should be used for your client developer portal
-If an API provides a developer portal, by convention it should have a subdomain labeled developer. 
-For example:
-    `https://developer.ato.gov.au`
-
-## API Status Page
-
-See: https://www.statuspage.io/
