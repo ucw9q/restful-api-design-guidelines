@@ -178,7 +178,13 @@ Guidelines:
 
 * DELETE must be used to remove a resource from its parent.
 * OPTIONS should be used to retrieve metadata that describes a resource’s available interactions.
-  
+
+**Note:** The recommended usage of the HTTP’s POST method for each of the four resource archetypes:
+
+|     | Document | Collection                      | Store | Controller           |
+| ----| ---------| ------------------------------- | ----- | -------------------- |
+| POST| _error_  | Create a new contained resource |_error_| Execute the function |
+ 
 ## Response Status Codes
 
 HTTP defines forty standard status codes that can be used to convey the results of a client’s request. The status codes 
@@ -205,11 +211,13 @@ Guidelines:
 * 307 (“Temporary Redirect”) should be used to tell clients to resubmit the request to another URI.
 * 400 (“Bad Request”) may be used to indicate nonspecific failure
 * 401 (“Unauthorized”) must be used when there is a problem with the client’s credentials.
-
-
-
-
-
-
+* 403 (“Forbidden”) should be used to forbid access regardless of authorisation state.
+* 404 (“Not Found”) must be used when a client’s URI cannot be mapped to a resource.
+* 405 (“Method Not Allowed”) must be used when the HTTP method is not supported.
+* 406 (“Not Acceptable”) must be used when the requested media type cannot be served.
+* 409 (“Conflict”) should be used to indicate a violation of resource state.
+* 412 (“Precondition Failed”) should be used to support conditional operations.
+* 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed.
+* 500 (“Internal Server Error”) should be used to indicate API malfunction.
 
 
