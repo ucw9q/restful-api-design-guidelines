@@ -157,9 +157,9 @@ Guidelines:
 
 Each HTTP method has specific, well-defined semantics within the context of a REST API’s resource model. The purpose of 
 **GET** is to retrieve a representation of a resource’s state. **HEAD** is used to retrieve the metadata associated 
-with the resource’s state. **PUT** should be used to add a new resource to a store or update a resource. **DELETE** 
-removes a resource from its parent. **POST** should be used to create a new resource within a collection and execute 
-controllers.
+with the resource’s state. **POST** should be used to create a new resource within a collection and execute 
+controllers. **PUT** should be used to add a new resource to a store or update a resource. **DELETE** removes a 
+resource from its parent. 
 
 Guidelines:
 * GET and POST must not be used to tunnel other request methods.
@@ -167,12 +167,13 @@ Guidelines:
 * HEAD should be used to retrieve response headers
 * POST must be used to create a new resource in a collection
 * POST must be used to execute controllers
-* DELETE must be used to remove a resource from its parent
-* OPTIONS should be used to retrieve metadata that describes a resource’s available interactions
-  
+
 * PUT must be used to both insert and update a stored resource
 * PUT must be used to update mutable resources
 
+* DELETE must be used to remove a resource from its parent
+* OPTIONS should be used to retrieve metadata that describes a resource’s available interactions
+  
 ## Response Status Codes
 
 
