@@ -91,15 +91,17 @@ field and link-based structure, the document type is the conceptual base archety
 In other words, the three other resource archetypes can be viewed as specialisations of the document archetype.
 
 Each URI below identifies a document resource:
-
-    http://api.superannuation.ato.gov.au/forms/form-1a
+```
+http://api.superannuation.ato.gov.au/forms/form-1a
+```
 
 A document may have child resources that represent its specific subordinate concepts. With its ability to bring many 
 different resource types together under a single parent, a document is a logical candidate for a REST API’s root 
 resource, which is also known as the "docroot". The example URI below identifies the docroot, which is the Superannuation 
 business area's REST API entry point:
-
-    http://api.superannuation.ato.gov.au
+```
+http://api.superannuation.ato.gov.au
+```
 
 ### Collection
 A collection resource is a server-managed directory of resources. Clients may propose new resources to be added to a 
@@ -107,8 +109,9 @@ collection. However, it is up to the collection to choose to create a new resour
 chooses what it wants to contain and also decides the URIs of each contained resource.
 
 Each URI below identifies a collection resource:
-
-    http://api.superannuation.ato.gov.au/forms
+```
+http://api.superannuation.ato.gov.au/forms
+```
 
 ### Store
 A store is a client-managed resource repository. A store resource lets an API client put resources in, get them back 
@@ -118,8 +121,9 @@ the store.
 
 The example interaction below shows a user (with ID 1234) of a client program using a fictional REST API to insert a 
 document resource named "receipt-101" in his or her store of deductions:
-
-    PUT /users/1234/deductions/receipt-101
+```
+PUT /users/1234/deductions/receipt-101
+```
 
 ### Controller
 A controller resource models a procedural concept. Controller resources are like executable functions, with parameters 
@@ -130,8 +134,9 @@ methods (create, retrieve, update, and delete, also known as CRUD).
 Controller names typically appear as the last segment in a URI path, with no child resources to follow them in the 
 hierarchy. The example below shows a controller resource (from a fictional REST API) that allows a client to resend an 
 alert to a user:
-
-    POST /alerts/4321/resend
+```
+POST /alerts/4321/resend
+```
 
 ## URI Path Design
 
@@ -146,8 +151,9 @@ Guidelines:
 
 ## URI Query Design
 A URI’s query comes after the path and before the optional fragment:
-
-    URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
+```
+URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]
+```
 
 As a component of a URI, the query contributes to the unique identification of a resource.
 
