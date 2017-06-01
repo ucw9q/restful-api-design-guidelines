@@ -7,7 +7,8 @@
 
 ## Introduction
 
-This document provides guidelines and examples to help developers design simple, consistent and easy-to-use RESTful APIs.
+This document provides guidelines and examples to help developers design simple, consistent and easy-to-use RESTful 
+APIs.
 
 ## References
 
@@ -27,7 +28,8 @@ Unless there are specific reasons otherwise, the first choices for any API devel
 ## Pragmatic REST
 
 The REST architectural style leverages the HTTP protocol to define an approach to inter-computer communications.
-It uses URI's to define “resources” and the standard HTTP verbs (POST, GET, PUT, and DELETE) as synonyms for create, read, update, and delete (CRUD).
+It uses URI's to define “resources” and the standard HTTP verbs (POST, GET, PUT, and DELETE) as synonyms for create, 
+read, update, and delete (CRUD).
 
 These guidelines seek a balance between a truly RESTful API and a positive developer experience.
 We follow REST principles (but not all of them).
@@ -41,10 +43,13 @@ A well-designed URI pattern makes an API easy to produce, consume, discover, and
 Use a standard and easy-to-guess set of optional parameters for each API call.
 
 ### Data format matters
-Make it straightforward for programmers to understand the data the API expects, what kind of data it will return, and how to change that.
+Make it straightforward for programmers to understand the data the API expects, what kind of data it will return, and 
+how to change that.
 
 ### Return codes matter
-Don't return 200 (OK) when you should be returning 201 (CREATED) and a [Location Header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) pointing to the location of the new resource.
+Don't return 200 (OK) when you should be returning 201 (CREATED) and a
+[Location Header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) pointing to the location of the 
+new resource.
 
 ### Versioning matters
 Always version your API.
@@ -59,7 +64,9 @@ Security, rate limiting, routing, and so on can and should be hidden in the HTTP
 ### URIs
 * A URI identifies a resource.
 * URIs should include nouns, not verbs.
-* URI paths that refer to a collection of objects should consist of a plural noun, such as `/orders` to refer to the set of all orders.
+* URI paths that refer to a collection of objects should consist of a plural noun, for example, `/orders` which refers to the set of all orders.
+* URI paths that refer to a single object should consist of a singular noun, followed by a unique primary key. For instance, /customers/Bob to refer to the customer with
+the primary ID of Bob, or /accounts/123456 to refer to account number 123456.
 
 #### Examples
 
@@ -72,3 +79,9 @@ Security, rate limiting, routing, and so on can and should be hidden in the HTTP
 | GET    | /orders           | Retrieves a list of orders.         |
 | PATCH  | /orders/{orderId} | Partially updates a specific order. |
 
+
+...
+
+### Versioning
+???
+See: http://semver.org/
