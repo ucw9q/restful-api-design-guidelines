@@ -53,7 +53,10 @@ Don't return 200 (OK) when you should be returning 201 (CREATED) and a
 new resource.
 
 ### Versioning matters
-Always version your API.
+Always version your API. By default, all requests receive the latest version of the REST API. 
+We encourage you to explicitly request a particular version via the Accept Header.
+
+Accept: application/vnd.github.v3+json
 
 ### Everything else should be hidden
 Security, rate limiting, routing, and so on can and should be hidden in the HTTP headers.
@@ -123,14 +126,32 @@ Controller names typically appear as the last segment in a URI path, with no chi
 hierarchy. The example below shows a controller resource (from a fictional REST API) that allows a client to resend an 
 alert to a user:
 
-    POST /alerts/245743/resend
+    POST /alerts/4321/resend
 
 ## URI Path Design
 Each URI path segment, separated by forward slashes (/), represents a design opportunity. Assigning meaningful values 
 to each path segment helps to clearly communicate the hierarchical structure of a REST API’s resource model.
 
+Guidelines:
 * A singular noun should be used for document names
 * A plural noun should be used for collection names
 * A plural noun should be used for store names
 * A verb or verb phrase should be used for controller names
 
+
+
+
+# ! Work in Progress !
+
+## URI Authority Design
+
+This section covers the naming conventions that should be used for the authority portion of a REST API.
+
+### Consistent subdomain names should be used for your client developer portal
+If an API provides a developer portal, by convention it should have a subdomain labeled developer. 
+For example:
+    `https://developer.ato.gov.au`
+
+## API Status Page
+
+See: https://www.statuspage.io/
