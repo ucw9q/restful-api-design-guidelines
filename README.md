@@ -201,7 +201,7 @@ Guidelines:
 ## Response Status Codes
 
 HTTP defines forty standard status codes that can be used to convey the results of a client’s request. The status codes 
-are divided into the five categories:
+are divided into five categories:
 
 | Category           | Description                                                                                    |     
 | -------------------| ---------------------------------------------------------------------------------------------- |
