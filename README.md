@@ -257,5 +257,5 @@ Guidelines:
 ### Additional Resources
 * [The GitHub API v3](https://developer.github.com/v3/)
 * [Google Cloud Platform: API Design Guide](https://cloud.google.com/apis/design/)
-* [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
+* [Vinay Sahni: Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
 
