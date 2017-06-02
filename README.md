@@ -59,7 +59,7 @@ how to change that.
 
 ### Return codes matter
 Don't return 200 (OK) when you should be returning 201 (CREATED) and a
-[Location Header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) pointing to the location of the 
+[Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the 
 new resource.
 
 ### Versioning matters
@@ -184,7 +184,7 @@ Guidelines:
 * POST must be used to create a new resource in a collection.
 * POST must be used to execute controllers.
 
-* PUT must be used to both insert and update a stored resource.
+* PUT must be used to both insert (the client can decide the URI) and update a stored resource.
 * PUT must be used to update mutable resources.
 
 * DELETE must be used to remove a resource from its parent.
@@ -212,10 +212,12 @@ are divided into the five categories:
 Guidelines:
 * 200 (“OK”) should be used to indicate nonspecific success.
 * 200 (“OK”) must not be used to communicate errors in the response body.
-* 201 (“Created”) must be used to indicate successful resource creation. The new URI should be returned in the response’s Location header.
+* 201 (“Created”) must be used to indicate successful resource creation. The new URI should be returned in the 
+response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
 * 202 (“Accepted”) must be used to indicate successful start of an asynchronous action (Controller resources may send 
 202 responses, but other resource types should not).
-* 301 (“Moved Permanently”) should be used to relocate resources. The new URI should be returned in the response’s Location header.
+* 301 (“Moved Permanently”) should be used to relocate resources. The new URI should be returned in the response’s 
+[Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
 * 302 (“Found”) should not be used.
 * 303 (“See Other”) should be used to refer the client to a different URI.
 * 304 (“Not Modified”) should be used to preserve bandwidth.
