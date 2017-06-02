@@ -252,7 +252,7 @@ restricted audience.
 
 Guidelines:
 * API management solutions may be used to protect resources. See: https://github.com/Mashape/kong
-* OAuth may be used to protect resources. See: https://getkong.org/plugins/
+* OAuth may be used to protect resources. See: http://oauthbible.com/ and https://getkong.org/plugins/
 
 ### Additional Resources
 * [The GitHub API v3](https://developer.github.com/v3/)
