@@ -95,8 +95,8 @@ In other words, the three other resource archetypes can be viewed as specialisat
 
 Each URI below identifies a document resource:
 ```
-http://api.superannuation.ato.gov.au/forms/form-1a
-http://api.superannuation.ato.gov.au/fact-sheets/super-and-tax
+https://api.superannuation.ato.gov.au/forms/form-1a
+https://api.superannuation.ato.gov.au/fact-sheets/super-and-tax
 ```
 
 A document may have child resources that represent its specific subordinate concepts. With its ability to bring many 
@@ -104,7 +104,7 @@ different resource types together under a single parent, a document is a logical
 resource, which is also known as the "docroot". The example URI below identifies the docroot, which is the Superannuation 
 business area's REST API entry point:
 ```
-http://api.superannuation.ato.gov.au
+https://api.superannuation.ato.gov.au
 ```
 
 ### Collection
@@ -114,8 +114,8 @@ chooses what it wants to contain and also decides the URIs of each contained res
 
 Each URI below identifies a collection resource:
 ```
-http://api.superannuation.ato.gov.au/forms
-http://api.superannuation.ato.gov.au/fact-sheets
+https://api.superannuation.ato.gov.au/forms
+https://api.superannuation.ato.gov.au/fact-sheets
 ```
 
 ### Store
