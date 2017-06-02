@@ -1,28 +1,36 @@
 # RESTful API Design Guidelines
 
 * [Introduction](#introduction)
-* [Our Technology Recommendations for APIs](#our-technology-recommendations-for-apis)
+
 * [Pragmatic REST](#pragmatic-rest)
 * [Pragmatic REST Principles](#pragmatic-rest-principles)
+
 * [Resource Oriented Design](#resource-oriented-design)
 * [Resource Modelling](#resource-modelling)
+ 
 * [URI Path Design](#uri-path-design)
 * [URI Query Design](#uri-query-design)
 * [Request Methods](#request-methods)
+* [Response Status Codes](#response-status-codes)
 
 ## Introduction
 
 This document provides guidelines and examples to help developers design simple, consistent and easy-to-use RESTful 
 APIs.
 
-## References
+Much of the material is based on common design problems found while developing RESTful web services. The problems 
+include resource and representation design, URIs, usage of HTTP, caching, concurrency control, partial updates, batch 
+processing, transactions, versioning and security.
+
+### References
 
 * [REST in Practice](http://shop.oreilly.com/product/9780596805838.do)
 * [APIs A Strategy Guide](http://shop.oreilly.com/product/0636920021223.do)
 * [REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)
+* [RESTful Web Services Cookbook](http://shop.oreilly.com/product/9780596801694.do)
 * [HTTP: The Definitive Guide](http://shop.oreilly.com/product/9781565925090.do)
 
-## Our Technology Recommendations for APIs
+### Our Technology Recommendations for APIs
 
 The first choices for any API development team today should be:
 * Pragmatic REST, because an API should be easy to provide, learn and consume
@@ -93,6 +101,7 @@ In other words, the three other resource archetypes can be viewed as specialisat
 Each URI below identifies a document resource:
 ```
 http://api.superannuation.ato.gov.au/forms/form-1a
+http://api.superannuation.ato.gov.au/fact-sheets/super-and-tax
 ```
 
 A document may have child resources that represent its specific subordinate concepts. With its ability to bring many 
@@ -111,6 +120,7 @@ chooses what it wants to contain and also decides the URIs of each contained res
 Each URI below identifies a collection resource:
 ```
 http://api.superannuation.ato.gov.au/forms
+http://api.superannuation.ato.gov.au/fact-sheets
 ```
 
 ### Store
@@ -207,10 +217,10 @@ are divided into the five categories:
 Guidelines:
 * 200 (“OK”) should be used to indicate nonspecific success.
 * 200 (“OK”) must not be used to communicate errors in the response body.
-* 201 (“Created”) must be used to indicate successful resource creation.
+* 201 (“Created”) must be used to indicate successful resource creation. The new URI should be returned in the response’s Location header.
 * 202 (“Accepted”) must be used to indicate successful start of an asynchronous action (Controller resources may send 
 202 responses, but other resource types should not).
-* 301 (“Moved Permanently”) should be used to relocate resources.
+* 301 (“Moved Permanently”) should be used to relocate resources. The new URI should be returned in the response’s Location header.
 * 302 (“Found”) should not be used.
 * 303 (“See Other”) should be used to refer the client to a different URI.
 * 304 (“Not Modified”) should be used to preserve bandwidth.
@@ -226,4 +236,17 @@ Guidelines:
 * 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed.
 * 500 (“Internal Server Error”) should be used to indicate API malfunction.
 
+## Versioning
 
+A REST API is composed of an assembly of interlinked resources: its resource model. The version of each resource is 
+conveyed through its representational form and state.
+
+Guidelines:
+* Schemas should be used to manage representational form versions.
+* Entity tags should be used to manage representational state versions
+
+## Security
+
+Guidelines:
+* OAuth may be used to protect resources. See: https://getkong.org/plugins/
+* API management solutions may be used to protect resources. See: https://github.com/Mashape/kong
