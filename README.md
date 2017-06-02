@@ -60,7 +60,7 @@ Make it straightforward for programmers to understand the data the API expects, 
 how to change that.
 
 ### Return codes matter
-Don't return 200 (OK) when you should be returning 201 (CREATED) and a
+Don't return 200 (OK) when you should be returning 201 (Created) and a
 [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header pointing to the location of the 
 new resource.
 
