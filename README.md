@@ -15,7 +15,7 @@
 ## Introduction
 
 This document provides guidelines and examples to help developers design simple, consistent and easy-to-use RESTful 
-APIs. Much of the material is based on common design challenges found while developing RESTful web services. The problems 
+APIs. Much of the material is based on common design challenges faced when developing RESTful web services. The problems 
 include resource and representation design, URIs, usage of HTTP, caching, concurrency control, partial updates, batch 
 processing, transactions, versioning and security.
 
