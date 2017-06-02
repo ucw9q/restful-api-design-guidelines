@@ -249,5 +249,5 @@ documents may contain private information and its controllers may expose operati
 restricted audience.
 
 Guidelines:
-* OAuth may be used to protect resources. See: https://getkong.org/plugins/
 * API management solutions may be used to protect resources. See: https://github.com/Mashape/kong
+* OAuth may be used to protect resources. See: https://getkong.org/plugins/
