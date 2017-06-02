@@ -1,13 +1,10 @@
 # RESTful API Design Guidelines
 
 * [Introduction](#introduction)
-
 * [Pragmatic REST](#pragmatic-rest)
 * [Pragmatic REST Principles](#pragmatic-rest-principles)
-
 * [Resource Oriented Design](#resource-oriented-design)
 * [Resource Modelling](#resource-modelling)
- 
 * [URI Path Design](#uri-path-design)
 * [URI Query Design](#uri-query-design)
 * [Request Methods](#request-methods)
@@ -16,9 +13,7 @@
 ## Introduction
 
 This document provides guidelines and examples to help developers design simple, consistent and easy-to-use RESTful 
-APIs.
-
-Much of the material is based on common design problems found while developing RESTful web services. The problems 
+APIs. Much of the material is based on common design problems found while developing RESTful web services. The problems 
 include resource and representation design, URIs, usage of HTTP, caching, concurrency control, partial updates, batch 
 processing, transactions, versioning and security.
 
