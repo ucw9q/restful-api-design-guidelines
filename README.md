@@ -15,7 +15,7 @@
 ## Introduction
 
 This document provides guidelines and examples to help developers design simple, consistent and easy-to-use RESTful 
-APIs. Much of the material is based on common design problems found while developing RESTful web services. The problems 
+APIs. Much of the material is based on common design challenges found while developing RESTful web services. The problems 
 include resource and representation design, URIs, usage of HTTP, caching, concurrency control, partial updates, batch 
 processing, transactions, versioning and security.
 
@@ -35,7 +35,7 @@ The first choices for any API development team today should be:
 * OAuth, because it prevents password propagation
 
 We describe these technologies as a first choice, not as an only choice. For example, you might decide to include a 
-query language, like [GraphQL](https://developer.github.com/v4/), with your API.
+query language, like [GraphQL](https://developer.github.com/v4/guides/), with your API.
 
 ## Pragmatic REST
 
