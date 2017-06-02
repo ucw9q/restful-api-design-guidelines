@@ -244,6 +244,10 @@ Guidelines:
 
 ## Security
 
+Many RESTful APIs expose resources that are associated with a specific client and/or user. For example, a REST API’s 
+documents may contain private information and its controllers may expose operations intended to be executed by a 
+restricted audience.
+
 Guidelines:
 * OAuth may be used to protect resources. See: https://getkong.org/plugins/
 * API management solutions may be used to protect resources. See: https://github.com/Mashape/kong
