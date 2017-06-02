@@ -9,6 +9,8 @@
 * [URI Query Design](#uri-query-design)
 * [Request Methods](#request-methods)
 * [Response Status Codes](#response-status-codes)
+* [Versioning](#versioning)
+* [Security](#security)
 
 ## Introduction
 
@@ -32,8 +34,8 @@ The first choices for any API development team today should be:
 * JSON, because it is easy to produce and consume
 * OAuth, because it prevents password propagation
 
-We describe these technologies as a first choice, not as an only choice. You might decide to include a query language, 
-like [GraphQL](http://graphql.org/), with your API.
+We describe these technologies as a first choice, not as an only choice. For example, you might decide to include a 
+query language, like [GraphQL](https://developer.github.com/v4/), with your API.
 
 ## Pragmatic REST
 
@@ -251,3 +253,9 @@ restricted audience.
 Guidelines:
 * API management solutions may be used to protect resources. See: https://github.com/Mashape/kong
 * OAuth may be used to protect resources. See: https://getkong.org/plugins/
+
+### Additional Resources
+* [The GitHub API v3](https://developer.github.com/v3/)
+* [Google Cloud Platform: API Design Guide](https://cloud.google.com/apis/design/)
+* [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
+
