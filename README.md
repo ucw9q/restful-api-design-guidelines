@@ -90,7 +90,7 @@ When desiging resource-oriented APIs, follow these steps:
 * Determine the relationships between resources
 * Decide the resource name schemes based on types and relationships
 * Decide the resource schemas
-* Attach minimum set of methods to resources
+* Attach a minimum set of methods to the resources
 
 ## Resource Modelling
 Resource modelling is an exercise that establishes your API’s key concepts. Before diving directly into the design of
