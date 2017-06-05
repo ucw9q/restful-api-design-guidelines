@@ -194,12 +194,12 @@ Below is a list of methods that REST services should support:
 
 | Method  | Description                                                      | Is Idempotent |
 | --------| -----------------------------------------------------------------| ------------- | 
-| POST    | Create a new resource (in a collection), or submit a command.    | False         |
-| GET     | Retrieve the current representation of a resource                | True          |
+| POST    | Create a new resource (in a collection), or submit a command.    | **False**     |
+| GET     | Retrieve the current representation of a resource.               | True          |
 | PUT     | Replace a resource, or create a named resource, when applicable. | True          |
 | DELETE  | Delete a resource.                                               | True          |
 | HEAD    | Retrieve GET response headers.                                   | True          |
-| PATCH   | Apply a partial update to a resource.                            | False         |
+| PATCH   | Apply a partial update to a resource.                            | **False**     |
 | OPTIONS | Obtain information about a request.                              | True          |
 
 **POST** should be used to create a new resource within a collection and execute controllers.
