@@ -236,7 +236,26 @@ response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#
 * 409 (“Conflict”) should be used to indicate a violation of resource state.
 * 412 (“Precondition Failed”) should be used to support conditional operations.
 * 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed.
-* 500 (“Internal Server Error”) should be used to indicate API malfunction.
+* 500 (“Internal Server Error”) should be used to indicate an API malfunction.
+
+## HTTP Headers
+
+Various forms of metadata may be conveyed through the entity headers contained within HTTP’s request and response 
+messages. HTTP defines a set of standard headers, some of which provide information about a requested resource. Other 
+headers indicate something about the representation carried by the message. And, a few headers serve as directives to 
+control intermediary caches.
+
+Guidelines:
+* Content-Type must be used.
+* Content-Length should be used.
+* Last-Modified must be used in responses.
+The Last-Modified header applies to response messages only. The value of this response header is a timestamp that 
+indicates the last time that something happened to alter the representational state of the resource. Clients and cache
+intermediaries may rely on this header to determine the freshness of their local copies of a resource’s state 
+representation. This header should always be supplied in response to GET requests.
+* ETag should be used in responses.
+
+
 
 ## Versioning
 
@@ -254,8 +273,8 @@ documents may contain private information and its controllers may expose operati
 restricted audience.
 
 Guidelines:
-* API management solutions may be used to protect resources. See: https://github.com/Mashape/kong
-* OAuth may be used to protect resources. See: http://oauthbible.com/ and https://getkong.org/plugins/
+* API management solutions should be used to protect resources. See: https://github.com/Mashape/kong
+* OAuth should be used to protect resources. See: https://getkong.org/plugins/
 
 ### Additional Resources
 * [The GitHub API v3](https://developer.github.com/v3/)
