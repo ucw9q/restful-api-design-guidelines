@@ -15,12 +15,24 @@
 ## Introduction
 
 This document provides guidelines and examples to help developers design simple, consistent and easy-to-use RESTful 
-APIs. Much of the material is based on common design challenges faced when developing RESTful web services. The 
-challenges include resource and representation design, URIs, usage of HTTP, caching, concurrency control, partial 
-updates, batch processing, transactions, versioning and security.
+APIs. Much of the material is based on common design challenges faced when developing RESTful web services. Those 
+challenges include: resource and representation design; URIs; usage of HTTP; caching; concurrency control; partial 
+updates; batch processing; transactions; versioning; and security.
 
-### References
+To provide the smoothest possible experience for developers, it's important to have APIs that follow consistent design 
+guidelines. The benefits of consistency accrue in aggregate as well; consistency allows teams to leverage common code, 
+patterns, documentation and design decisions.
 
+These guidelines aim to achieve the following:
+* Define consistent practices and patterns for all REST APIs.
+* Adhere as closely as possible to accepted REST/HTTP best practices.
+* Make accessing ATO Services via REST APIs as easy as possible.
+
+### Recommended Reading
+
+Understanding the philosophy behind the 
+[REST Architectural Style](https://en.wikipedia.org/wiki/Representational_state_transfer) is essential when designing RESTful APIs.
+If you are new to RESTful API design, here are some good resources:
 * [REST in Practice](http://shop.oreilly.com/product/9780596805838.do)
 * [APIs A Strategy Guide](http://shop.oreilly.com/product/0636920021223.do)
 * [REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)
@@ -188,10 +200,8 @@ Guidelines:
 * HEAD should be used to retrieve response headers.
 * POST must be used to create a new resource in a collection.
 * POST must be used to execute controllers.
-
 * PUT must be used to both insert (the client can decide the URI) and update a stored resource.
 * PUT must be used to update mutable resources.
-
 * DELETE must be used to remove a resource from its parent.
 * OPTIONS should be used to retrieve metadata that describes a resource’s available interactions.
 
@@ -217,7 +227,7 @@ are divided into five categories:
 Guidelines:
 * 200 (“OK”) should be used to indicate nonspecific success.
 * 200 (“OK”) must not be used to communicate errors in the response body.
-* 201 (“Created”) must be used to indicate successful resource creation. 
+* 201 (“Created”) must be used to indicate successful resource creation.
    The new URI should be returned in the response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
 * 202 (“Accepted”) must be used to indicate successful start of an asynchronous action (Controller resources may send 
 202 responses, but other resource types should not).
@@ -264,6 +274,18 @@ Guidelines:
    instead of the output representation of the resource.
 * Cache-Control, Expires and Date headers should be used to encourage caching.
 
+## Message Body Format
+
+REST APIs often employ a text-based format to represent a resource state as a set of meaningful fields. Right now, the 
+most commonly used format is JSON.
+
+Guidelines:
+* JSON should be supported for resource representation
+* JSON must be well-formed
+* XML and other formats may optionally be used for resource representation
+
+## Error Representation
+
 ## Versioning
 
 A REST API is composed of an assembly of interlinked resources: its resource model. The version of each resource is 
@@ -285,7 +307,7 @@ Guidelines:
 
    [OAuth 2](https://oauth.net/2/) uses [Bearer tokens](https://tools.ietf.org/html/rfc6750) and relies on TLS/SSL for 
    transport encryption. 
-   See: https://getkong.org/plugins/
+   See: https://getkong.org/plugins/oauth2-authentication/
 
 ### Additional Resources
 * [The GitHub API v3](https://developer.github.com/v3/)
