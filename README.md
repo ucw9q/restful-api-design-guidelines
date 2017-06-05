@@ -188,24 +188,29 @@ Guidelines:
 
 ## Request Methods
 
-Each HTTP method has specific, well-defined semantics within the context of a REST API’s resource model. The purpose of 
-**GET** is to retrieve a representation of a resource’s state. **HEAD** is used to retrieve the metadata associated 
-with the resource’s state. **POST** should be used to create a new resource within a collection and execute 
-controllers. **PUT** should be used to add a new resource to a store or update a resource. **DELETE** removes a 
-resource from its parent. 
+Each HTTP method has specific, well-defined semantics within the context of a REST API’s resource model. 
 
-Guidelines:
-* GET must be used to retrieve a representation of a resource.
-* GET and POST must not be used to tunnel other request methods.
-* HEAD should be used to retrieve response headers.
-* POST must be used to create a new resource in a collection.
-* POST must be used to execute controllers.
-* PUT must be used to both insert (the client can decide the URI) and update a stored resource.
-* PUT must be used to update mutable resources.
-* DELETE must be used to remove a resource from its parent.
-* OPTIONS should be used to retrieve metadata that describes a resource’s available interactions.
+Below is a list of methods that REST services should support:
 
-**Note:** The recommended usage of the HTTP’s POST method for each of the four resource archetypes:
+| Method  | Description                                                     | Is Idempotent |
+| --------| ----------------------------------------------------------------| ------------- | 
+| POST    | Create a new resource (in a collection), or submit a command    | False         |
+| GET     | Retrieve the current representation of a resource               | True          |
+| PUT     | Replace a resource, or create a named resource, when applicable | True          |
+| DELETE  | Delete a resource                                               | True          |
+| HEAD    | Retrieve GET response headers                                   | True          |
+| PATCH   | Apply a partial update to a resource                            | False         |
+| OPTIONS | Obtain information about a request                              | True          |
+
+**POST** should be used to create a new resource within a collection and execute controllers.
+**GET** is used to retrieve a representation of a resource’s state. 
+**PUT** should be used to add a new resource to a store or update a resource (within a collection).
+**DELETE** removes a resource from its parent.
+**HEAD** is used to retrieve the metadata associated with the resource’s state.
+
+**Note:** Not all resources will support all methods, but all resources using these methods must conform to their usage.
+
+The recommended usage of the HTTP’s POST method for each of the four resource archetypes:
 
 |     | Document | Collection                      | Store | Controller           |
 | ----| ---------| ------------------------------- | ----- | -------------------- |
@@ -259,6 +264,7 @@ Guidelines:
 * Content-Type must be used.
 * Content-Length should be used.
 * Last-Modified must be used in responses.
+
    The value of the **Last-Modified** header response header is a timestamp that indicates the last time that something 
    happened to alter the representational state of the resource. Clients and cache intermediaries may rely on this 
    header to determine the freshness of their local copies of a resource’s state  representation. 
@@ -266,6 +272,7 @@ Guidelines:
    The response header **Last-Modified** contains a timestamp in [RFC 1123](http://www.ietf.org/rfc/rfc1123.txt) format 
    which is validated against **If-Modified-Since**. This header should always be supplied in response to GET requests.
 * ETag should be used in responses.
+
    An ETag is an opaque string that identifies a specific “version” of the representational state contained
    in the response’s entity.
    When generating a response, you should include a HTTP header ETag containing a hash or checksum of the representation.
