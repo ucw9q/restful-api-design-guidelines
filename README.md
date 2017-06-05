@@ -151,7 +151,7 @@ PUT /users/1234/deductions/receipt-101
 A controller resource models a procedural concept. Controller resources are like executable functions, with parameters 
 and return values; inputs and outputs. Like a traditional web application’s use of HTML forms, a REST API relies on 
 controller resources to perform application-specific actions that cannot be logically mapped to one of the standard 
-methods (create, retrieve, update, and delete, also known as CRUD).
+methods (create, retrieve, update, and delete).
 
 Controller names typically appear as the last segment in a URI path, with no child resources to follow them in the 
 hierarchy. The example below shows a controller resource (from a fictional REST API) that allows a client to resend an 
@@ -292,6 +292,8 @@ Guidelines:
 * XML and other formats may optionally be used for resource representation
 
 ## Error Representation
+
+// TODO
 
 ## Versioning
 
