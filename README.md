@@ -1,4 +1,4 @@
-# RESTful API Design Guidelines
+# ATO RESTful API Design Guidelines
 
 * [Introduction](#introduction)
 * [Pragmatic REST](#pragmatic-rest)
