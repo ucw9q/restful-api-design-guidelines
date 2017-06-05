@@ -250,7 +250,7 @@ Guidelines:
 * Content-Length should be used.
 * Last-Modified must be used in responses.
 
-⋅⋅⋅The Last-Modified header applies to response messages only. The value of this response header is a timestamp that 
+   The Last-Modified header applies to response messages only. The value of this response header is a timestamp that 
 indicates the last time that something happened to alter the representational state of the resource. Clients and cache
 intermediaries may rely on this header to determine the freshness of their local copies of a resource’s state 
 representation. This header should always be supplied in response to GET requests.
