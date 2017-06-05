@@ -97,19 +97,19 @@ In other words, the three other resource archetypes can be viewed as specialisat
 
 Each URI below identifies a document resource:
 ```
-https://api.superannuation.ato.gov.au/forms/form-1a
-https://api.superannuation.ato.gov.au/fact-sheets/super-and-tax
+https://api.ato.gov.au/forms/form-1a
+https://api.ato.gov.au/fact-sheets/super-and-tax
 ```
 
 A document may have child resources that represent its specific subordinate concepts. With its ability to bring many 
 different resource types together under a single parent, a document is a logical candidate for a REST API’s root 
-resource, which is also known as the "docroot". The example URI below identifies the docroot, which is the Superannuation 
-business area's REST API entry point:
+resource, which is also known as the "service root". The example URI below identifies the service root, which is the 
+Superannuation business area's REST API entry point:
 ```
 https://api.superannuation.ato.gov.au
 ```
 
-The docroot should be considered a “namespace”. Namespaces should reflect the consumer's perspective on how a 
+The service root should be considered a “namespace”. Namespaces should reflect the consumer's perspective on how a 
 resource-oriented API should work, and not necessarily the producer organisations.
 
 ### Collection
@@ -217,12 +217,12 @@ are divided into five categories:
 Guidelines:
 * 200 (“OK”) should be used to indicate nonspecific success.
 * 200 (“OK”) must not be used to communicate errors in the response body.
-* 201 (“Created”) must be used to indicate successful resource creation. The new URI should be returned in the 
-response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
+* 201 (“Created”) must be used to indicate successful resource creation. 
+   The new URI should be returned in the response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
 * 202 (“Accepted”) must be used to indicate successful start of an asynchronous action (Controller resources may send 
 202 responses, but other resource types should not).
-* 301 (“Moved Permanently”) should be used to relocate resources. The new URI should be returned in the response’s 
-[Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
+* 301 (“Moved Permanently”) should be used to relocate resources. 
+   The new URI should be returned in the response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
 * 302 (“Found”) should not be used.
 * 303 (“See Other”) should be used to refer the client to a different URI.
 * 304 (“Not Modified”) should be used to preserve bandwidth.
@@ -250,13 +250,23 @@ Guidelines:
 * Content-Length should be used.
 * Last-Modified must be used in responses.
 
-   The Last-Modified header applies to response messages only. The value of this response header is a timestamp that 
-indicates the last time that something happened to alter the representational state of the resource. Clients and cache
-intermediaries may rely on this header to determine the freshness of their local copies of a resource’s state 
-representation. This header should always be supplied in response to GET requests.
+   The value of the **Last-Modified** header response header is a timestamp that indicates the last time that something 
+   happened to alter the representational state of the resource. Clients and cache intermediaries may rely on this 
+   header to determine the freshness of their local copies of a resource’s state  representation. 
+   
+   The response header **Last-Modified** contains a timestamp in [RFC 1123](http://www.ietf.org/rfc/rfc1123.txt) format 
+   which is validated against **If-Modified-Since**. This header should always be supplied in response to GET requests.
+   
 * ETag should be used in responses.
 
-
+   An ETag is an opaque string that identifies a specific “version” of the representational state contained
+   in the response’s entity.
+   When generating a response, you should include a HTTP header ETag containing a hash or checksum of the representation.
+   This value should change whenever the output representation changes. If an inbound HTTP requests contains an 
+   **If-None-Match** header with a matching **ETag** value, the API should return a **304 Not Modified** status code 
+   instead of the output representation of the resource. This header should always be supplied in response to GET requests.
+   
+* Cache-Control, Expires and Date headers should be used to encourage caching.
 
 ## Versioning
 
@@ -275,12 +285,16 @@ restricted audience.
 
 Guidelines:
 * API management solutions should be used to protect resources. See: https://github.com/Mashape/kong
-* OAuth should be used to protect resources. See: https://getkong.org/plugins/
+* OAuth 2.0 should be used to protect resources. 
+
+   [OAuth 2](https://oauth.net/2/) uses [Bearer tokens](https://tools.ietf.org/html/rfc6750) and relies on TLS/SSL for 
+   transport encryption. 
+   See: https://getkong.org/plugins/
 
 ### Additional Resources
 * [The GitHub API v3](https://developer.github.com/v3/)
 * [Google Cloud Platform: API Design Guide](https://cloud.google.com/apis/design/)
+* [The Microsoft REST API Guidelines](https://github.com/Microsoft/api-guidelines)
 * [Vinay Sahni: Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
 * [The PayPal API Style Guide](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
 * [The Cisco API Design Guide](https://github.com/CiscoDevNet/api-design-guide)
-* [The Microsoft REST API Guidelines](https://github.com/Microsoft/api-guidelines)
