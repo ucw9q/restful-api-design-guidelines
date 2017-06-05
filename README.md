@@ -51,6 +51,18 @@ Service Faults, are defined as the service failing to correctly return in respon
 generally result in "5xx" HTTP error codes. Calls that fail due to rate limiting or quota failures do not count as 
 faults. Calls that fail as the result of a service fast-failing requests (often for its own protection) do count as faults.
 
+### Latency
+Latency is defined as how long a particular API call takes to complete, measured as closely to the client as possible. 
+This metric applies to both synchronous and asynchronous APIs in the same way. For long running calls, the latency is 
+measured on the initial request and measures how long that call (not the overall operation) takes to complete.
+
+### Time to complete
+Services that expose long operations must track "Time to Complete" metrics around those operations.
+
+### Long running API faults
+For a Long Running API, it's possible for both the initial request to begin the operation and the request to retrieve 
+the results to technically work (each passing back a 200), but for the underlying operation to have failed. 
+Long Running faults must roll up as faults into the overall availability metrics.
 
 ### Our Technology Recommendations for APIs
 
