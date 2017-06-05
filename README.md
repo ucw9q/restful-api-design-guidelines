@@ -249,23 +249,19 @@ Guidelines:
 * Content-Type must be used.
 * Content-Length should be used.
 * Last-Modified must be used in responses.
-
    The value of the **Last-Modified** header response header is a timestamp that indicates the last time that something 
    happened to alter the representational state of the resource. Clients and cache intermediaries may rely on this 
    header to determine the freshness of their local copies of a resource’s state  representation. 
    
    The response header **Last-Modified** contains a timestamp in [RFC 1123](http://www.ietf.org/rfc/rfc1123.txt) format 
    which is validated against **If-Modified-Since**. This header should always be supplied in response to GET requests.
-   
 * ETag should be used in responses.
-
    An ETag is an opaque string that identifies a specific “version” of the representational state contained
    in the response’s entity.
    When generating a response, you should include a HTTP header ETag containing a hash or checksum of the representation.
    This value should change whenever the output representation changes. If an inbound HTTP requests contains an 
    **If-None-Match** header with a matching **ETag** value, the API should return a **304 Not Modified** status code 
-   instead of the output representation of the resource. This header should always be supplied in response to GET requests.
-   
+   instead of the output representation of the resource.
 * Cache-Control, Expires and Date headers should be used to encourage caching.
 
 ## Versioning
