@@ -59,11 +59,6 @@ measured on the initial request and measures how long that call (not the overall
 ### Time to complete
 Services that expose long operations must track "Time to Complete" metrics around those operations.
 
-### Long running API faults
-For a Long Running API, it's possible for both the initial request to begin the operation and the request to retrieve 
-the results to technically work (each passing back a 200), but for the underlying operation to have failed. 
-Long Running faults must roll up as faults into the overall availability metrics.
-
 ### Our Technology Recommendations for APIs
 
 The first choices for any API development team today should be:
