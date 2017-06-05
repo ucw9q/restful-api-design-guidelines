@@ -25,7 +25,7 @@ patterns, documentation and design decisions.
 
 These guidelines aim to achieve the following:
 * Define consistent practices and patterns for all REST APIs.
-* Adhere as closely as possible to accepted REST/HTTP best practices.
+* Adhere as closely as possible to accepted REST/HTTP good practices.
 * Make accessing ATO Services via REST APIs as easy as possible.
 
 ### Recommended Reading
@@ -77,8 +77,10 @@ Don't return 200 (OK) when you should be returning 201 (Created) and a
 new resource.
 
 ### Versioning matters
-Always version your API. By default, all requests receive the latest version of the REST API. 
-We encourage you to explicitly request a particular version via the Accept Header.
+Always version your API. 
+It's critical that clients can count on services to be stable over time, and it's critical that services can add 
+features and make changes. By default, all requests receive the latest version of the REST API. We encourage you to 
+explicitly request a particular version via the Accept Header.
 
 ### Everything else should be hidden
 Security, rate limiting, routing, and so on can and should be hidden in the HTTP headers.
@@ -159,6 +161,19 @@ alert to a user:
 ```
 POST /alerts/4321/resend
 ```
+## Taxonomy
+
+### Errors
+Errors, or more specifically Service Errors, are defined as a client passing invalid data to the service and the 
+service correctly rejecting that data. Examples include invalid credentials, incorrect parameters, unknown version IDs, 
+or similar. These generally result in "4xx" HTTP error codes and are due to client's passing incorrect or invalid data.
+
+### Faults
+Service Faults, are defined as the service failing to correctly return in response to a valid client request. These  
+generally result in "5xx" HTTP error codes. Calls that fail due to rate limiting or quota failures do not count as 
+faults. Calls that fail as the result of a service fast-failing requests (often for its own protection) do count as faults.
+
+
 
 ## URI Path Design
 
@@ -312,7 +327,7 @@ restricted audience.
 
 Guidelines:
 * API management solutions should be used to protect resources. See: https://github.com/Mashape/kong
-* OAuth 2.0 should be used to protect resources. 
+* OAuth 2 should be used to protect resources. 
 
    [OAuth 2](https://oauth.net/2/) uses [Bearer tokens](https://tools.ietf.org/html/rfc6750) and relies on TLS/SSL for 
    transport encryption. 
