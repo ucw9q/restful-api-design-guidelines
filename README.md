@@ -39,6 +39,19 @@ If you are new to RESTful API design, here are some good resources:
 * [RESTful Web Services Cookbook](http://shop.oreilly.com/product/9780596801694.do)
 * [HTTP: The Definitive Guide](http://shop.oreilly.com/product/9781565925090.do)
 
+## Taxonomy
+
+### Errors
+Errors, or more specifically Service Errors, are defined as a client passing invalid data to the service and the 
+service correctly rejecting that data. Examples include invalid credentials, incorrect parameters, unknown version IDs, 
+or similar. These generally result in "4xx" HTTP error codes and are due to client's passing incorrect or invalid data.
+
+### Faults
+Service Faults, are defined as the service failing to correctly return in response to a valid client request. These  
+generally result in "5xx" HTTP error codes. Calls that fail due to rate limiting or quota failures do not count as 
+faults. Calls that fail as the result of a service fast-failing requests (often for its own protection) do count as faults.
+
+
 ### Our Technology Recommendations for APIs
 
 The first choices for any API development team today should be:
@@ -161,17 +174,6 @@ alert to a user:
 ```
 POST /alerts/4321/resend
 ```
-## Taxonomy
-
-### Errors
-Errors, or more specifically Service Errors, are defined as a client passing invalid data to the service and the 
-service correctly rejecting that data. Examples include invalid credentials, incorrect parameters, unknown version IDs, 
-or similar. These generally result in "4xx" HTTP error codes and are due to client's passing incorrect or invalid data.
-
-### Faults
-Service Faults, are defined as the service failing to correctly return in response to a valid client request. These  
-generally result in "5xx" HTTP error codes. Calls that fail due to rate limiting or quota failures do not count as 
-faults. Calls that fail as the result of a service fast-failing requests (often for its own protection) do count as faults.
 
 
 
