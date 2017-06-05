@@ -109,6 +109,9 @@ business area's REST API entry point:
 https://api.superannuation.ato.gov.au
 ```
 
+The docroot should be considered a “namespace”. Namespaces should reflect the consumer's perspective on how a 
+resource-oriented API should work, and not necessarily the producer organisations.
+
 ### Collection
 A collection resource is a server-managed directory of resources. Clients may propose new resources to be added to a 
 collection. However, it is up to the collection to choose to create a new resource, or not. A collection resource 
@@ -258,4 +261,6 @@ Guidelines:
 * [The GitHub API v3](https://developer.github.com/v3/)
 * [Google Cloud Platform: API Design Guide](https://cloud.google.com/apis/design/)
 * [Vinay Sahni: Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
-
+* [The PayPal API Style Guide](https://github.com/paypal/api-standards/blob/master/api-style-guide.md)
+* [The Cisco API Design Guide](https://github.com/CiscoDevNet/api-design-guide)
+* [The Microsoft REST API Guidelines](https://github.com/Microsoft/api-guidelines)
