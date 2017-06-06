@@ -266,6 +266,8 @@ but if used they must be used consistently.
 
 ## Standard Response Headers 
 
+Services should return the following response headers where required.
+
 | Header             | Type          | Description                                                                 |
 | ------------------ | ------------- | --------------------------------------------------------------------------- | 
 | Date               | Date          | Timestamp of the response, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and time format. |
