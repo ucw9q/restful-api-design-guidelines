@@ -47,9 +47,9 @@ service correctly rejecting that data. Examples include invalid credentials, inc
 or similar. These generally result in "4xx" HTTP error codes and are due to client's passing incorrect or invalid data.
 
 ### Faults
-Service Faults, are defined as the service failing to correctly return in response to a valid client request. These  
-generally result in "5xx" HTTP error codes. Calls that fail due to rate limiting or quota failures do not count as 
-faults. Calls that fail as the result of a service fast-failing requests (often for its own protection) do count as faults.
+Service Faults, are defined as the service failing to correctly return a response to a valid client request. These  
+generally result in "5xx" HTTP error codes. Calls that fail due to rate limiting do not count as faults. Calls that 
+fail as the result of a service fast-failing requests (often for its own protection) do count as faults.
 
 ### Latency
 Latency is defined as how long a particular API call takes to complete, measured as closely to the client as possible. 
