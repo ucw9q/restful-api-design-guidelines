@@ -257,16 +257,16 @@ but if used they must be used consistently.
 | Authorization   | String        | Authorisation header for the request.                                       |
 | Date            | Date          | Timestamp of the request, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and time format. |
 | Accept          | Content type  | The requested content type for the response e.g., "application/json".       |
-| Accept-Encoding | Gzip, deflate | REST endpoints SHOULD support GZIP and DEFLATE encoding.                    |
+| Accept-Encoding | Gzip, deflate | REST endpoints should support GZIP and DEFLATE encoding.                    |
 | Accept-Language | "en", etc.    | Specifies the preferred language for the response.                          |
 | Accept-Charset  | "UTF-8"       | The default is UTF-8.                                                       |
-| Content-Type    | Content type  | The [mime](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) type of request body (PUT/POST/PATCH). |
+| Content-Type    | Content type  | The [mime](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) type of request body (POST/PUT/PATCH). |
 | Prefer          | return=minimal, return=representation  | If the return=minimal preference is specified, services should return an empty body in response to a successful insert or update. If return=representation is specified, services should return the created or updated resource in the response. |
 | If-Match, If-None-Match, If-Range  | String | Services that support updates to resources using optimistic concurrency control must support the If-Match header to do so. Services may also use other headers related to ETags as long as they follow the HTTP specification. |
 
 ## Standard Response Headers 
 
-Services should return the following response headers where required.
+Services should return the following response headers, where required.
 
 | Header             | Type          | Description                                                                 |
 | ------------------ | ------------- | --------------------------------------------------------------------------- | 
