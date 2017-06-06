@@ -182,8 +182,6 @@ alert to a user:
 POST /alerts/4321/resend
 ```
 
-
-
 ## URI Path Design
 
 Each URI path segment, separated by forward slashes (/), represents a design opportunity. Assigning meaningful values 
@@ -194,6 +192,7 @@ Guidelines:
 * A plural noun should be used for collection names.
 * A plural noun should be used for store names.
 * A verb or verb phrase should be used for controller names.
+* Limit your URI's to a maximum of [2048](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184) characters.
 
 ## URI Query Design
 A URI’s query comes after the path and before the optional fragment:
@@ -210,14 +209,13 @@ Guidelines:
 * The query component of a URI may be used to filter collections or stores.
 * The query component of a URI should be used to paginate collection or store results.
 
-## Request Methods
+## Standard Request Methods
 
-Each HTTP method has specific, well-defined semantics within the context of a REST API’s resource model. 
-
-Below is a list of methods that REST services should support:
+Each HTTP method has specific, well-defined semantics within the context of a REST API’s resource model. Below is a 
+list of methods that REST services should support:
 
 | Method  | Description                                                 | Is Idempotent |
-| --------| ------------------------------------------------------------| ------------- | 
+| ------- | ----------------------------------------------------------- | ------------- | 
 | POST    | Create a new resource in a collection, or submit a command. | **False**     |
 | GET     | Retrieve the current representation of a resource.          | True          |
 | PUT     | Update a resource, or create a named resource.              | True          |
@@ -236,10 +234,74 @@ Below is a list of methods that REST services should support:
 
 The recommended usage of the HTTP’s POST method for each of the four resource archetypes:
 
-|     | Document | Collection            | Store | Controller           |
-| ----| ---------| --------------------- | ----- | -------------------- |
-| POST| _error_  | Create a new resource |_error_| Execute the command  |
+|     | Document | Collection            | Store | Controller          |
+| ----| -------- | --------------------- | ----- | ------------------- |
+| POST| _error_  | Create a new resource |_error_| Execute the command |
  
+ 
+## Standard Request Headers 
+ 
+All header values must follow the syntax rules set forth in the specification where the header field is defined. 
+Many HTTP headers are defined in [RFC7231](https://tools.ietf.org/html/rfc7231), however a complete list of approved 
+headers can be found in the [IANA Header Registry](http://www.iana.org/assignments/message-headers/message-headers.xhtml).
+
+Below is a table of request headers that should be used by ATO RESTful API services. Using these headers is not mandated, 
+but if used they must be used consistently.
+
+| Header        | Type         | Description                                                                 |
+| ------------- | ------------ | --------------------------------------------------------------------------- | 
+| Authorization | String       | Authorisation header for the request                                        |
+| Date          | Date         | Timestamp of the request, based on the client's clock, in RFC 5322 date and 
+                                 time format. The server SHOULD NOT make any assumptions about the           |
+| Accept        | Content type | The requested content type for the response such as:                        |
+|  |  |  |
+
+
+
+
+
+
+
+
+## Standard Response Headers 
+
+// TODO
+
+## HTTP Headers
+
+Various forms of metadata may be conveyed through the entity headers contained within HTTP’s request and response 
+messages. HTTP defines a set of standard headers, some of which provide information about a requested resource. Other 
+headers indicate something about the representation carried by the message. And, a few headers serve as directives to 
+control intermediary caches.
+
+Guidelines:
+* Content-Type must be used.
+* Content-Length should be used.
+* Last-Modified must be used in responses.
+
+   The value of the **Last-Modified** header response header is a timestamp that indicates the last time that something 
+   happened to alter the representational state of the resource. Clients and cache intermediaries may rely on this 
+   header to determine the freshness of their local copies of a resource’s state  representation. 
+   
+   The response header **Last-Modified** contains a timestamp in [RFC 1123](http://www.ietf.org/rfc/rfc1123.txt) format 
+   which is validated against **If-Modified-Since**. This header should always be supplied in response to GET requests.
+* ETag should be used in responses.
+
+   An ETag is an opaque string that identifies a specific “version” of the representational state contained
+   in the response’s entity.
+   When generating a response, you should include a HTTP header ETag containing a hash or checksum of the representation.
+   This value should change whenever the output representation changes. If an inbound HTTP requests contains an 
+   **If-None-Match** header with a matching **ETag** value, the API should return a **304 Not Modified** status code 
+   instead of the output representation of the resource.
+* Cache-Control, Expires and Date headers should be used to encourage caching.
+
+
+
+
+
+
+
+
 ## Response Status Codes
 
 HTTP defines forty standard status codes that can be used to convey the results of a client’s request. The status codes 
@@ -277,33 +339,6 @@ Guidelines:
 * 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed.
 * 500 (“Internal Server Error”) should be used to indicate an API malfunction.
 
-## HTTP Headers
-
-Various forms of metadata may be conveyed through the entity headers contained within HTTP’s request and response 
-messages. HTTP defines a set of standard headers, some of which provide information about a requested resource. Other 
-headers indicate something about the representation carried by the message. And, a few headers serve as directives to 
-control intermediary caches.
-
-Guidelines:
-* Content-Type must be used.
-* Content-Length should be used.
-* Last-Modified must be used in responses.
-
-   The value of the **Last-Modified** header response header is a timestamp that indicates the last time that something 
-   happened to alter the representational state of the resource. Clients and cache intermediaries may rely on this 
-   header to determine the freshness of their local copies of a resource’s state  representation. 
-   
-   The response header **Last-Modified** contains a timestamp in [RFC 1123](http://www.ietf.org/rfc/rfc1123.txt) format 
-   which is validated against **If-Modified-Since**. This header should always be supplied in response to GET requests.
-* ETag should be used in responses.
-
-   An ETag is an opaque string that identifies a specific “version” of the representational state contained
-   in the response’s entity.
-   When generating a response, you should include a HTTP header ETag containing a hash or checksum of the representation.
-   This value should change whenever the output representation changes. If an inbound HTTP requests contains an 
-   **If-None-Match** header with a matching **ETag** value, the API should return a **304 Not Modified** status code 
-   instead of the output representation of the resource.
-* Cache-Control, Expires and Date headers should be used to encourage caching.
 
 ## Message Body Format
 
