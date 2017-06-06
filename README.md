@@ -1,14 +1,19 @@
 # ATO RESTful API Design Guidelines
 
 * [Introduction](#introduction)
+* [Taxonmy](#taxonmy)
+* [Our Technology Recommendations for APIs](#our-technology-recommendations-for-apis)
 * [Pragmatic REST](#pragmatic-rest)
 * [Pragmatic REST Principles](#pragmatic-rest-principles)
 * [Resource Oriented Design](#resource-oriented-design)
 * [Resource Modelling](#resource-modelling)
 * [URI Path Design](#uri-path-design)
 * [URI Query Design](#uri-query-design)
-* [Request Methods](#request-methods)
-* [Response Status Codes](#response-status-codes)
+* [Standard Request Methods](#standard-request-methods)
+* [Standard Request Headers](#standard-request-headers)
+* [Standard Response Headers](#standard-response-headers)
+* [Standard Response Formats](#standard-response-formats)
+* [Errors](#errors)
 * [Versioning](#versioning)
 * [Security](#security)
 
@@ -59,7 +64,7 @@ measured on the initial request and measures how long that call (not the overall
 ### Time to complete
 Services that expose long operations must track "Time to Complete" metrics around those operations.
 
-### Our Technology Recommendations for APIs
+## Our Technology Recommendations for APIs
 
 The first choices for any API development team today should be:
 * Pragmatic REST, because an API should be easy to provide, learn and consume
