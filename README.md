@@ -1,7 +1,7 @@
 # ATO RESTful API Design Guidelines
 
 * [Introduction](#introduction)
-* [Taxonmy](#taxonmy)
+* [Taxonomy](#taxonomy)
 * [Our Technology Recommendations for APIs](#our-technology-recommendations-for-apis)
 * [Pragmatic REST](#pragmatic-rest)
 * [Pragmatic REST Principles](#pragmatic-rest-principles)
