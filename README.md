@@ -251,10 +251,10 @@ but if used they must be used consistently.
 | Header          | Type          | Description                                                                 |
 | --------------- | ------------- | --------------------------------------------------------------------------- | 
 | Authorization   | String        | Authorisation header for the request.                                       |
-| Date            | Date          | Timestamp of the request, based on the client's clock, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and  time format. |
+| Date            | Date          | Timestamp of the request, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and  time format. |
 | Accept          | Content type  | The requested content type for the response e.g., "application/json".       |
 | Accept-Encoding | Gzip, deflate | REST endpoints SHOULD support GZIP and DEFLATE encoding.                    |
-|                 |               |                                                                             |
+| Accept-Language | "en", etc.    | Specifies the preferred language for the response.                          |
 
 
 
