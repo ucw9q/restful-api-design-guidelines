@@ -283,15 +283,38 @@ formats developers are accustomed to using. For example, when a mobile or other 
 developers expect JSON message payloads.
 
 Guidelines:
-* Services should provide JSON as the default encoding
-* JSON must be well-formed
-* XML and other formats may optionally be used for resource representation
+* Services should provide JSON as the default encoding.
+* JSON must be well-formed.
+* XML and other formats may optionally be used for resource representation.
 
-## Error Representation
+## Errors
 
+The ATO's REST APIs use a simple protocol-agnostic error model, which allows us to expose a consistent experience 
+across different APIs, API protocols, and error contexts (for instance, asynchronous, batch, or workflow errors).
 
+### Error Codes
+The ATO's APIs use canonical error codes. Individual APIs should avoid defining additional error codes, since 
+developers are very unlikely to write logic to handle a large number of error codes. Handing an average of three error 
+codes per API call would mean most service logic would just be for error handling, which would not be a good developer 
+experience.
 
-## Response Status Codes
+A JSON error response:
+
+```
+{
+  "error": {
+    "code": 401,
+    "message": "Request contained invalid credentials.",
+    "status": "UNAUTHENTICATED",
+    "details": [
+      {
+        ...
+      }
+    ]
+  }
+}
+
+```
 
 HTTP defines forty standard status codes that can be used to convey the results of a client’s request. The status codes 
 are divided into five categories:
@@ -304,21 +327,37 @@ are divided into five categories:
 | 4xx: Client Error  | This category of error status codes points the finger at clients.                              |
 | 5xx: Server Error  | The server takes responsibility for these error status codes.                                  |
 
+Below is a table containing all of the ATO's canonical error codes and a short description of their cause. 
+To handle an error, you can check the description for the returned status code and modify your call accordingly.
+
+| HTTP | Type                | Description                                                                 |
+| ---  | ------------------- | --------------------------------------------------------------------------- | 
+| 200  | OK                  | No Error.                                                                   |
+| 400  | INVALID_ARGUMENT    | Client specified an invalid argument. Check error message and error details for more information. |                                                                  |
+| 400  | FAILED_PRECONDITION | Request can not be executed in the current system state, such as deleting a non-empty directory. |                                                                  |
+| 400  | OUT_OF_RANGE        | Client specified an invalid range.                                          |
+| 401  | UNAUTHENTICATED     | Request not authenticated due to missing, invalid, or expired OAuth token.  |
+| 403  | PERMISSION_DENIED   | Client does not have sufficient permission.                                 |
+| 404  | NOT_FOUND           | The specified resource was not found, or the request is rejected for undisclosed reasons. |
+| 409  | ABORTED             | Concurrency conflict, such as read-modify-write conflict.                   |
+| 409  | ALREADY_EXISTS      | The resource that a client tried to create already exists.                  |
+| 499  | CANCELLED           | Request cancelled by the client.                                            |
+| 500  | INTERNAL            | Internal server error. Typically a server bug.                              |
+| 501  | NOT_IMPLEMENTED     | API method not implemented by the server.                                   |
+| 503  | UNAVAILABLE         | Service unavailable. Typically the server is down.                          |
+
 Guidelines:
 * 200 (“OK”) should be used to indicate nonspecific success.
-* 200 (“OK”) must not be used to communicate errors in the response body.
 * 201 (“Created”) must be used to indicate successful resource creation.
    The new URI should be returned in the response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
 * 202 (“Accepted”) must be used to indicate successful start of an asynchronous action (Controller resources may send 
 202 responses, but other resource types should not).
 * 301 (“Moved Permanently”) should be used to relocate resources. 
    The new URI should be returned in the response’s [Location](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.30) header.
-* 302 (“Found”) should not be used.
 * 303 (“See Other”) should be used to refer the client to a different URI.
 * 304 (“Not Modified”) should be used to preserve bandwidth.
 * 307 (“Temporary Redirect”) should be used to tell clients to resubmit the request to another URI.
 * 400 (“Bad Request”) may be used to indicate nonspecific failure
-* 401 (“Unauthorized”) must be used when there is a problem with the client’s credentials.
 * 403 (“Forbidden”) should be used to forbid access regardless of authorisation state.
 * 404 (“Not Found”) must be used when a client’s URI cannot be mapped to a resource.
 * 405 (“Method Not Allowed”) must be used when the HTTP method is not supported.
@@ -326,7 +365,15 @@ Guidelines:
 * 409 (“Conflict”) should be used to indicate a violation of resource state.
 * 412 (“Precondition Failed”) should be used to support conditional operations.
 * 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed.
-* 500 (“Internal Server Error”) should be used to indicate an API malfunction.
+
+### Error Propagation
+If your API service depends on other services, you should not blindly propagate errors from those services to your 
+clients. When translating errors, we suggest the following:
+
+Guidelines:
+* Hide implementation details and confidential information.
+* Adjust the party responsible for the error. For example, a server that receives an INVALID_ARGUMENT (400) error from 
+another service should propagate an INTERNAL (500) error  to its own caller.
 
 ## Versioning
 
