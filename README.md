@@ -242,7 +242,7 @@ The recommended usage of the HTTP’s POST method for each of the four resource 
 ## Standard Request Headers 
  
 All header values must follow the syntax rules set forth in the specification where the header field is defined. 
-Many HTTP headers are defined in [RFC7231](https://tools.ietf.org/html/rfc7231), however a complete list of approved 
+Many HTTP headers are defined in [RFC 7231](https://tools.ietf.org/html/rfc7231), however a complete list of approved 
 headers can be found in the [IANA Header Registry](http://www.iana.org/assignments/message-headers/message-headers.xhtml).
 
 Below is a table of request headers that should be used by ATO RESTful API services. Using these headers is not mandated, 
@@ -251,10 +251,9 @@ but if used they must be used consistently.
 | Header        | Type         | Description                                                                 |
 | ------------- | ------------ | --------------------------------------------------------------------------- | 
 | Authorization | String       | Authorisation header for the request                                        |
-| Date          | Date         | Timestamp of the request, based on the client's clock, in RFC 5322 date and 
-                                 time format. The server SHOULD NOT make any assumptions about the           |
-| Accept        | Content type | The requested content type for the response such as:                        |
-|  |  |  |
+| Date          | Date         | Timestamp of the request, based on the client's clock, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and |
+|               |              | time format. The server SHOULD NOT make any assumptions about the           |
+
 
 
 
