@@ -240,6 +240,10 @@ The recommended usage of the HTTP’s POST method for each of the four resource 
  
  
 ## Standard Request Headers 
+
+HTTP defines a set of standard headers, some of which provide information about a requested resource. Other 
+headers indicate something about the representation carried by the message. And, a few headers serve as directives to 
+control intermediary caches.
  
 All header values must follow the syntax rules set forth in the specification where the header field is defined. 
 Many HTTP headers are defined in [RFC 7231](https://tools.ietf.org/html/rfc7231), however a complete list of approved 
@@ -255,45 +259,14 @@ but if used they must be used consistently.
 | Accept          | Content type  | The requested content type for the response e.g., "application/json".       |
 | Accept-Encoding | Gzip, deflate | REST endpoints SHOULD support GZIP and DEFLATE encoding.                    |
 | Accept-Language | "en", etc.    | Specifies the preferred language for the response.                          |
-
-
+| Accept-Charset  | "UTF-8"       | The default is UTF-8.                                                       |
+| Content-Type    | Content type  | The  [mime](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) type of request body (PUT/POST/PATCH). |
+| Prefer          | return=minimal, return=representation  | If the return=minimal preference is specified, services should return an empty body in response to a successful insert or update. If return=representation is specified, services should return the created or updated resource in the response. |
+| If-Match, If-None-Match, If-Range  | String | Services that support updates to resources using optimistic concurrency control must support the If-Match header to do so. Services may also use other headers related to ETags as long as they follow the HTTP specification. |
 
 ## Standard Response Headers 
 
 // TODO
-
-## HTTP Headers
-
-Various forms of metadata may be conveyed through the entity headers contained within HTTP’s request and response 
-messages. HTTP defines a set of standard headers, some of which provide information about a requested resource. Other 
-headers indicate something about the representation carried by the message. And, a few headers serve as directives to 
-control intermediary caches.
-
-Guidelines:
-* Content-Type must be used.
-* Content-Length should be used.
-* Last-Modified must be used in responses.
-
-   The value of the **Last-Modified** header response header is a timestamp that indicates the last time that something 
-   happened to alter the representational state of the resource. Clients and cache intermediaries may rely on this 
-   header to determine the freshness of their local copies of a resource’s state  representation. 
-   
-   The response header **Last-Modified** contains a timestamp in [RFC 1123](http://www.ietf.org/rfc/rfc1123.txt) format 
-   which is validated against **If-Modified-Since**. This header should always be supplied in response to GET requests.
-* ETag should be used in responses.
-
-   An ETag is an opaque string that identifies a specific “version” of the representational state contained
-   in the response’s entity.
-   When generating a response, you should include a HTTP header ETag containing a hash or checksum of the representation.
-   This value should change whenever the output representation changes. If an inbound HTTP requests contains an 
-   **If-None-Match** header with a matching **ETag** value, the API should return a **304 Not Modified** status code 
-   instead of the output representation of the resource.
-* Cache-Control, Expires and Date headers should be used to encourage caching.
-
-
-
-
-
 
 
 
