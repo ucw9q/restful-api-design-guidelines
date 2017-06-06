@@ -248,17 +248,13 @@ headers can be found in the [IANA Header Registry](http://www.iana.org/assignmen
 Below is a table of request headers that should be used by ATO RESTful API services. Using these headers is not mandated, 
 but if used they must be used consistently.
 
-| Header        | Type         | Description                                                                 |
-| ------------- | ------------ | --------------------------------------------------------------------------- | 
-| Authorization | String       | Authorisation header for the request                                        |
-| Date          | Date         | Timestamp of the request, based on the client's clock, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and |
-|               |              | time format. The server SHOULD NOT make any assumptions about the           |
-
-
-
-
-
-
+| Header          | Type          | Description                                                                 |
+| --------------- | ------------- | --------------------------------------------------------------------------- | 
+| Authorization   | String        | Authorisation header for the request.                                       |
+| Date            | Date          | Timestamp of the request, based on the client's clock, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and  time format. |
+| Accept          | Content type  | The requested content type for the response e.g., "application/json".       |
+| Accept-Encoding | Gzip, deflate | REST endpoints SHOULD support GZIP and DEFLATE encoding.                    |
+|                 |               |                                                                             |
 
 
 
