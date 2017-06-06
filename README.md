@@ -255,7 +255,7 @@ but if used they must be used consistently.
 | Header          | Type          | Description                                                                 |
 | --------------- | ------------- | --------------------------------------------------------------------------- | 
 | Authorization   | String        | Authorisation header for the request.                                       |
-| Date            | Date          | Timestamp of the request, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and  time format. |
+| Date            | Date          | Timestamp of the request, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and time format. |
 | Accept          | Content type  | The requested content type for the response e.g., "application/json".       |
 | Accept-Encoding | Gzip, deflate | REST endpoints SHOULD support GZIP and DEFLATE encoding.                    |
 | Accept-Language | "en", etc.    | Specifies the preferred language for the response.                          |
@@ -266,9 +266,13 @@ but if used they must be used consistently.
 
 ## Standard Response Headers 
 
-// TODO
-
-
+| Header             | Type          | Description                                                                 |
+| ------------------ | ------------- | --------------------------------------------------------------------------- | 
+| Date               | Date          | Timestamp of the response, in [RFC 5322](https://tools.ietf.org/html/rfc5322#section-3.3) date and time format. |
+| Content-Type       | Content type  | The  [mime](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) type of request body (PUT/POST/PATCH). |
+| Content-Encoding   | Gzip, deflate | GZIP or DEFLATE, as appropriate.                                            |
+| Preference-Applied | return=minimal, return=representation  | Whether a preference indicated in the Prefer request header was applied. |
+| ETag               | String        | The ETag response-header field provides the current value of the entity tag for the requested variant. Used with If-Match, If-None-Match and If-Range to implement optimistic concurrency control. |
 
 ## Response Status Codes
 
