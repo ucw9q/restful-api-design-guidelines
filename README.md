@@ -276,6 +276,21 @@ Services should return the following response headers, where required.
 | Preference-Applied | return=minimal, return=representation  | Whether a preference indicated in the Prefer request header was applied. |
 | ETag               | String        | The ETag response-header field provides the current value of the entity tag for the requested variant. Used with If-Match, If-None-Match and If-Range to implement optimistic concurrency control. |
 
+## Standard Response Formats
+
+If an organisation wants to provide the best possible experience for developers, then they must provide data in the 
+formats developers are accustomed to using. For example, when a mobile or other low-bandwidth client is involved, 
+developers expect JSON message payloads.
+
+Guidelines:
+* Services should provide JSON as the default encoding
+* JSON must be well-formed
+* XML and other formats may optionally be used for resource representation
+
+## Error Representation
+
+
+
 ## Response Status Codes
 
 HTTP defines forty standard status codes that can be used to convey the results of a client’s request. The status codes 
@@ -312,21 +327,6 @@ Guidelines:
 * 412 (“Precondition Failed”) should be used to support conditional operations.
 * 415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed.
 * 500 (“Internal Server Error”) should be used to indicate an API malfunction.
-
-
-## Message Body Format
-
-REST APIs often employ a text-based format to represent a resource state as a set of meaningful fields. Right now, the 
-most commonly used format is JSON.
-
-Guidelines:
-* JSON should be supported for resource representation
-* JSON must be well-formed
-* XML and other formats may optionally be used for resource representation
-
-## Error Representation
-
-// TODO
 
 ## Versioning
 
