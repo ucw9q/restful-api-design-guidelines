@@ -13,6 +13,7 @@
 * [Standard Request Headers](#standard-request-headers)
 * [Standard Response Headers](#standard-response-headers)
 * [Standard Response Formats](#standard-response-formats)
+* [Canonical Data Models](#canonical-data-models)
 * [Errors](#errors)
 * [Versioning](#versioning)
 * [Security](#security)
@@ -42,7 +43,7 @@ If you are new to RESTful API design, here are some good resources:
 * [APIs A Strategy Guide](http://shop.oreilly.com/product/0636920021223.do)
 * [REST API Design Rulebook](http://shop.oreilly.com/product/0636920021575.do)
 * [RESTful Web Services Cookbook](http://shop.oreilly.com/product/9780596801694.do)
-* [Java SOA Cookbook](http://shop.oreilly.com/product/9780596520731.do) (includes a very good discussion of canonical data models and service design)
+* [Java SOA Cookbook](http://shop.oreilly.com/product/9780596520731.do)
 * [HTTP: The Definitive Guide](http://shop.oreilly.com/product/9781565925090.do)
 
 ## Taxonomy
@@ -291,7 +292,17 @@ developers expect JSON message payloads.
 Guidelines:
 * Services should provide JSON as the default encoding.
 * JSON must be well-formed.
+* Use [JSON Schema](https://spacetelescope.github.io/understanding-json-schema/index.html) to validate the structure of JSON data.
 * XML and other formats may optionally be used for resource representation.
+
+## Canonical Data Models
+
+The ATO has a canonical data model (as discussed in Woolf and Hohpe’s [Enterprise Integration Patterns](http://www.enterpriseintegrationpatterns.com/)).
+ 
+Guidelines:
+* Define schemas local to services that reuse a separate layer of schemas, defined independently of services, at the enterprise level.
+
+**Note:** There is a very good discussion of canonical data models and service design in the Eben Hewitt's [Java SOA Cookbook](http://shop.oreilly.com/product/9780596520731.do).
 
 ## Errors
 
