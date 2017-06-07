@@ -6,6 +6,7 @@
 * [Pragmatic REST](#pragmatic-rest)
 * [Pragmatic REST Principles](#pragmatic-rest-principles)
 * [Resource Oriented Design](#resource-oriented-design)
+* [URI Authority Design](#uri-authority-design)
 * [Resource Modelling](#resource-modelling)
 * [URI Path Design](#uri-path-design)
 * [URI Query Design](#uri-query-design)
@@ -120,6 +121,32 @@ When desiging resource-oriented APIs, follow these steps:
 * Decide the resource name schemes based on types and relationships
 * Decide the resource schemas
 * Attach a minimum set of methods to the resources
+
+## URI Authority Design
+
+This section covers the naming conventions that should be used for the authority portion of a REST API.
+
+### Consistent subdomain names should be used for your APIs
+The top-level domain and first subdomain names (e.g., superannuation.ato.gov.au) of an API should identify its service 
+owner. The full domain name of an API should add a subdomain named api.
+
+For example:
+```
+https://api.superannuation.ato.gov.au
+```
+
+### Consistent subdomain names should be used for your developer portal
+Many REST APIs have an associated website, known as a developer portal, to help onboard new clients with documentation, 
+forums, and self-service provisioning of secure API access keys. If an API provides a developer portal, by convention 
+it should have a subdomain labeled developer. 
+
+For example:
+```
+https://developer.superannuation.ato.gov.au
+```
+
+Guidelines:
+* Provide a developer portal. See: https://gelato.io/ and https://github.com/Mashape/kong
 
 ## Resource Modelling
 Resource modelling is an exercise that establishes your API’s key concepts. Before diving directly into the design of
