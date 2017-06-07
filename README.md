@@ -124,7 +124,7 @@ When desiging resource-oriented APIs, follow these steps:
 
 ## URI Authority Design
 
-This section covers the naming conventions that should be used for the authority portion of a REST API.
+This section discusses the naming conventions that should be used for the authority portion of a REST API.
 
 ### Consistent subdomain names should be used for your APIs
 The top-level domain and first subdomain names (e.g., superannuation.ato.gov.au) of an API should identify its service 
