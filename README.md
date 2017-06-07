@@ -146,8 +146,8 @@ https://developer.superannuation.ato.gov.au
 ```
 
 Guidelines:
-* Provide a developer portal. See: https://gelato.io/ and https://github.com/Mashape/kong
-* Provide an API Status Page: See: https://www.statuspage.io/
+* You should provide a developer portal. See: https://gelato.io/ and https://github.com/Mashape/kong
+* You should provide an API status page. See: https://www.statuspage.io/
 
 ## Resource Modelling
 Resource modelling is an exercise that establishes your API’s key concepts. Before diving directly into the design of
