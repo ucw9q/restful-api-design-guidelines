@@ -75,7 +75,8 @@ The first choices for any API development team today should be:
 * OAuth, because it prevents password propagation
 
 We describe these technologies as a first choice, not as an only choice. For example, you might decide to include a 
-query language, like [GraphQL](https://developer.github.com/v4/guides/), with your API.
+query language, like [GraphQL](https://developer.github.com/v4/guides/) or [falcor](https://netflix.github.io/falcor/), 
+with your API.
 
 ## Pragmatic REST
 
@@ -156,7 +157,8 @@ URI paths, it may be helpful to first think about the REST API’s resource mode
 ### Resource Archetypes
 When modeling an API’s resources, we can start with the some basic resource archetypes. Like design patterns, the 
 resource archetypes help us consistently communicate the structures and behaviors that are commonly found in REST API 
-designs. A REST API is composed of four distinct resource archetypes: **document**, **collection**, **store**, and **controller**.
+designs. A REST API is composed of four distinct resource archetypes: **document**, **collection**, **store**, and 
+**controller**.
 
 ### Document
 A document resource is a singular concept that is akin to an object instance or a database record. A document’s state 
@@ -319,6 +321,7 @@ developers expect JSON message payloads.
 
 Guidelines:
 * Services should provide JSON as the default encoding.
+* Use camelCase for field names.
 * JSON must be well-formed.
 * Use [JSON Schema](https://spacetelescope.github.io/understanding-json-schema/index.html) to validate the structure of JSON data.
 * XML and other formats may optionally be used for resource representation.
